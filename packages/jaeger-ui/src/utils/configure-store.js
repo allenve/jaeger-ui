@@ -15,7 +15,7 @@
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 
 import traceDiff from '../components/TraceDiff/duck';
 import archive from '../components/TracePage/ArchiveNotifier/duck';
@@ -25,7 +25,7 @@ import * as jaegerMiddlewares from '../middlewares';
 import { getAppEnvironment } from './constants';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
-  history: createBrowserHistory(),
+  history: createHashHistory(),
 });
 
 export default function configureStore() {

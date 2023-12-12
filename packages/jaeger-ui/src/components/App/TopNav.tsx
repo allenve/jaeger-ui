@@ -36,26 +36,26 @@ import withRouteProps from '../../utils/withRouteProps';
 
 type Props = ReduxState;
 
-const NAV_LINKS = [
+const NAV_LINKS: any[] = [
   {
     to: searchUrl.getUrl(),
     matches: searchUrl.matches,
     text: 'Search',
   },
-  {
-    to: (props: Props) => diffUrl.getUrl(props.traceDiff),
-    matches: diffUrl.matches,
-    text: 'Compare',
-  },
+  // {
+  //   to: (props: Props) => diffUrl.getUrl(props.traceDiff),
+  //   matches: diffUrl.matches,
+  //   text: 'Compare',
+  // },
 ];
 
-if (getConfigValue('dependencies.menuEnabled')) {
-  NAV_LINKS.push({
-    to: dependencyGraph.getUrl(),
-    matches: dependencyGraph.matches,
-    text: 'System Architecture',
-  });
-}
+// if (getConfigValue('dependencies.menuEnabled')) {
+//   NAV_LINKS.push({
+//     to: dependencyGraph.getUrl(),
+//     matches: dependencyGraph.matches,
+//     text: 'System Architecture',
+//   });
+// }
 
 if (getConfigValue('deepDependencies.menuEnabled')) {
   NAV_LINKS.push({
@@ -73,13 +73,13 @@ if (getConfigValue('qualityMetrics.menuEnabled')) {
   });
 }
 
-if (getConfigValue('monitor.menuEnabled')) {
-  NAV_LINKS.push({
-    to: monitorATMUrl.getUrl(),
-    matches: monitorATMUrl.matches,
-    text: 'Monitor',
-  });
-}
+// if (getConfigValue('monitor.menuEnabled')) {
+//   NAV_LINKS.push({
+//     to: monitorATMUrl.getUrl(),
+//     matches: monitorATMUrl.matches,
+//     text: 'Monitor',
+//   });
+// }
 
 function getItem(item: ConfigMenuItem) {
   const { label, anchorTarget, url } = item;
@@ -111,7 +111,7 @@ const itemsGlobalLeft: MenuProps['items'] = [
   {
     label: (
       <Link to={prefixUrl('/')} style={{ fontSize: '14px', fontWeight: 500 }}>
-        JAEGER UI
+        Aisuda Trace
       </Link>
     ),
     key: 'JAEGER UI',
@@ -132,7 +132,8 @@ export function TopNavImpl(props: Props) {
       if (isItem(m)) {
         return { label: getItem(m).label, key: getItem(m).key };
       }
-      return { label: <CustomNavDropdown key={m.label} {...m} />, key: m.label };
+      return null
+      // return { label: <CustomNavDropdown key={m.label} {...m} />, key: m.label };
     }),
   ];
 

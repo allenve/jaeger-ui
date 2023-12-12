@@ -20,7 +20,7 @@ import vitePluginImp from 'vite-plugin-imp';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 const proxyConfig = {
-  target: 'http://localhost:16686',
+  target: 'http://10.27.44.135:8686',
   secure: false,
   changeOrigin: true,
   ws: true,
@@ -76,7 +76,7 @@ export default defineConfig({
       '/qualitymetrics-v2': proxyConfig,
     },
   },
-  base: './',
+  base: '/',
   build: {
     outDir: 'build',
     assetsDir: 'static',
